@@ -25,7 +25,7 @@
 				scope : {
 					title : "@comptitle",
 					tagline : "@tl",
-					headcount : "@hc",
+					headcount : "=headcount"
 				}
 			}
 		});
@@ -40,11 +40,11 @@
 	<!-- div ng-include="'view/pagetitle.html'"></div-->
 	<input type="range" min="0" max="10000" step="100" ng-model="headcount" />
 	<hr/>
-	<pagetitle comptitle="Sabre" tl="T4"></pagetitle>
+	<pagetitle comptitle="Sabre" tl="T4" headcount="2000"></pagetitle>
 	<hr/>
-	<div comptitle="Ola" pagetitle tl="T3" ></div>
+	<div comptitle="Ola" pagetitle tl="T3" headcount="99" ></div>
 	<hr/>
-	<div comptitle="TCS" tl="do idea" class="pagetitle"></div>
+	<div comptitle="TCS" tl="do idea" headcount="100" class="pagetitle"></div>
 	
 </body>
 </html>
