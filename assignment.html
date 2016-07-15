@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Repeat</title>
+	<script src="lib/angular.js"></script>
+</head>
+<body ng-app ng-init="data = [
+{userName:'Shyam',userCity:'Amaravati',userState:'Maharashtra',userId:195.123123,join : '2003-02-13'},
+{userName:'Prachi',userCity:'Satara',userState:'Maharashtra',userId:102.123123,join : '2014-03-03'},
+{userName:'Rahul',userCity:'Surat',userState:'Gujarat',userId:150.113223,join : '2005-08-25'},
+{userName:'Sanket',userCity:'Kolhapur',userState:'Maharashtra',userId:108.113223,join : '2014-03-10'},
+{userName:'Nilesh',userCity:'Bhopal',userState:'Madhya Pradesh',userId:171.113223,join : '2013-03-13'},
+{userName:'Bharath',userCity:'Tirupathi',userState:'Andhra Pradesh',userId:121.987654,join : '2015-10-28'},
+{userName:'Sachin',userCity:'Yavatmal',userState:'Maharashtra',userId:166.563223,join : '2006-06-11'},
+{userName:'Ganpat',userCity:'Ahmedabad',userState:'Gujarat',userId:199.563223,join : '2013-11-23'},
+{userName:'Amar',userCity:'Guntur',userState:'Andhra Pradesh',userId:137.123123,join : '2015-11-02'},
+{userName:'pooja',userCity:'Agra',userState:'Utter pradesh',userId:120.987654,join : '2012-01-12'},
+{userName:'Kuldip',userCity:'Mumbai',userState:'Maharashtra',userId:123.987654,join : '2008-12-04'},
+{userName:'Amar',userCity:'Guntur',userState:'Andhra Pradesh',userId:137.123123,join : '2015-11-02'},
+{userName:'pooja',userCity:'Agra',userState:'Utter pradesh',userId:120.987654,join : '2012-01-12'},
+{userName:'Kuldip',userCity:'Mumbai',userState:'Maharashtra',userId:123.987654,join : '2008-12-04'},
+{userName:'Pandurang',userCity:'Chandrapur',userState:'Maharashtra',userId:156.987654,join : '2007-10-29'},
+{userName:'Vijay',userCity:'bangalore',userState:'karnataka',userId:155.113223,join : '2010-03-05'}
+]; offsetVal = 0; limitVal = 3">
+
+<table cellpadding="5" cellspacing="0" border="1">
+	<tr>
+		<th>Serial #</th>
+		<th>User Id</th>
+		<th>Name</th>
+		<th>State</th>
+		<th>City</th>
+		<th>Join Date</th>
+	</tr>
+	<tr ng-repeat="user in data | limitTo : limitVal : offsetVal">
+		<th>{{ $index + 1 + offsetVal}}</th>
+		<td>{{ user.userId}}</td>
+		<td>{{ user.userName}}</td>
+		<td>{{ user.userState}}</td>
+		<td>{{ user.userCity }}</td>
+		<td>{{ user.join }}</td>
+	</tr>
+</table>
+<button ng-hide="offsetVal < limitVal" ng-click="offsetVal = offsetVal-limitVal">back</button>
+<button ng-hide="offsetVal > data.length-limitVal-1" ng-click="offsetVal = offsetVal+limitVal">next</button>
+</body>
+</html>
+
+
+
+
+
+
+
