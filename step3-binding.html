@@ -20,8 +20,13 @@
 		angular.module("app").controller("compcontroller", function($scope){
 			$scope.title = "sabre";
 			$scope.acceptHandler = function(){
-				angular.element(document.getElementsByTagName("input")[2]).triggerHandler("sabreEvent")
+			//	angular.element(document.getElementsByTagName("input")[2]).triggerHandler("sabreEvent")
 			//	console.log(angular.element(document.getElementsByTagName("button")[0]))
+			//	.triggerHandler("sabreEvent")
+			var elm = angular.element(document.getElementsByTagName("input")[2]);
+			if(elm.val() == 'vijay'){
+				elm.triggerHandler("sabreEvent");
+			}
 			};
 		});
 	</script>
