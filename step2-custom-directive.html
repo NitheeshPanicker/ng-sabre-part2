@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Step 2</title>
+	<style>
+		div header{
+			border: 5px dotted blue;
+			background-color: green;
+		}
+		header{
+			border: 2px solid red;
+			background-color: orange;
+		}
+	</style>
+	<script src="lib/angular.js"></script>
+	<script>
+		angular.module("app",[]);
+		angular.module("app")
+				.directive("pagetitle", function(){
+			return {
+				templateUrl : "view/pagetitle.html",
+				restrict : "CMEA",
+				replace :true
+			}
+		});
+	</script>
+</head>
+<body ng-app="app">
+	<!-- div ng-include="'view/pagetitle.html'"></div-->
+	<pagetitle></pagetitle>
+	<hr/>
+	<div pagetitle></div>
+	<hr/>
+	<div class="pagetitle"></div>
+	<hr/>
+	<!-- directive: pagetitle -->
+</body>
+</html>
