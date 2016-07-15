@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Step 2</title>
+	<style>
+		div header{
+			border: 5px dotted blue;
+			background-color: green;
+		}
+		header{
+			border: 2px solid red;
+			background-color: orange;
+		}
+	</style>
+	<script src="lib/angular.js"></script>
+	<script>
+		angular.module("app",[]);
+		
+		angular.module("app").controller("compcontroller", function($scope){
+			$scope.title = "sabre";
+			$scope.acceptHandler = function(){
+				angular.element(document.getElementsByTagName("input")[2]).triggerHandler("sabreEvent")
+			//	console.log(angular.element(document.getElementsByTagName("button")[0]))
+			};
+		});
+	</script>
+</head>
+<body ng-app="app" ng-controller="compcontroller">
+		<h1>{{ title }}</h1>
+		<input ng-model="title" ng-model-options="{ updateOn: 'blur'}" type="text" />
+		<br/>
+		<input ng-model="title" ng-model-options="{ debounce: 4000 }" type="text" />
+		<br/>
+		<input ng-model="title" ng-model-options="{ updateOn: 'sabreEvent' }" type="text" />
+		<button ng-click="acceptHandler()">Accept</button>
+</body>
+</html>

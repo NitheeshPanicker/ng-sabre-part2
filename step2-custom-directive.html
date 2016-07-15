@@ -16,6 +16,12 @@
 	<script src="lib/angular.js"></script>
 	<script>
 		angular.module("app",[]);
+		
+		angular.module("app").controller("compcontroller", function($scope){
+			$scope.title = "Welcome to Sabre";
+			$scope.headcount = 0;
+			$scope.tagline= "Technology That Transforms Travel";
+		});
 		angular.module("app")
 				.directive("pagetitle", function(){
 			return {
@@ -23,28 +29,24 @@
 				restrict : "CMEA",
 				replace : true,
 				scope : {
-					title : "@comptitle",
-					tagline : "@tl",
-					headcount : "=headcount"
+					headcount : "=",
+					title : "@",
+					tagline : "@tl"
 				}
 			}
-		});
-		angular.module("app").controller("compcontroller", function($scope){
-			$scope.title = "Welcome to Sabre";
-			$scope.headcount = 0;
-			$scope.tagline= "Technology That Transforms Travel";
 		});
 	</script>
 </head>
 <body ng-app="app" ng-controller="compcontroller">
 	<!-- div ng-include="'view/pagetitle.html'"></div-->
-	<input type="range" min="0" max="10000" step="100" ng-model="headcount" />
+	<input type="range" min="0" max="10000" step="100" 
+	ng-model="headcount" />
 	<hr/>
-	<pagetitle comptitle="Sabre" tl="T4" headcount="2000"></pagetitle>
+	<pagetitle title="Sabre" tl="T4" headcount="headcount" ></pagetitle>
 	<hr/>
-	<div comptitle="Ola" pagetitle tl="T3" headcount="99" ></div>
+	<div title="Ola" pagetitle tl="T3" headcount="headcount"></div>
 	<hr/>
-	<div comptitle="TCS" tl="do idea" headcount="100" class="pagetitle"></div>
+	<div title="TCS" tl="do idea" class="pagetitle" headcount="headcount"></div>
 	
 </body>
 </html>
