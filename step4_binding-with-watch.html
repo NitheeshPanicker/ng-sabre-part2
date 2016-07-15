@@ -24,12 +24,16 @@
 				if(newval == 'vijay'){
 					$scope.title = "welcome vijay"
 				}
-			})
+			});
+			$scope.callFun = function(){
+				$scope.title = "welcome vijay";
+			}
 		});
 	</script>
 </head>
 <body ng-app="app" ng-controller="compcontroller">
 		<h1>{{ title }}</h1>
-		<input type="text" ng-model="title" />
+		<input type="text" ng-value="title" />
+		<input type="checkbox" ng-click="callFun()" />
 </body>
 </html>

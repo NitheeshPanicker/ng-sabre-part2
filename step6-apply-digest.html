@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Using Apply and Digest</title>
+	<script src="lib/angular.js"></script>
+	<script>
+		angular
+		.module("app",[])
+		.controller("fc", function($scope, $rootScope){
+			$scope.controllerHero = "Batman";
+			$rootScope.rootHero = "Superman";
+			
+			setTimeout(function(){
+				$scope.controllerHero = "Joker";
+				$rootScope.rootHero = "Joker";
+				$scope.$apply(); 
+			},4000);
+		});
+	</script>
+</head>
+<body ng-app="app">
+	<h1>$rootScope {{ rootHero }}</h1>
+	<div  ng-controller="fc">
+		<h1>$scope {{ controllerHero }}</h1>
+	</div>
+</body>
+</html>
