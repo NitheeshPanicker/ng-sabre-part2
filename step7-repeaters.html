@@ -3,6 +3,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Document</title>
+	<style>
+		.oddtrue{
+			background-color: silver;
+		}
+		.oddfalse{
+			background-color: gray;
+		}
+	</style>
 	<script src="lib/angular.js"></script>
 	<script>
 		angular.module("app",[]);
@@ -30,7 +38,7 @@
 			<th>Release Date</th>
 			<th>Order Type</th>
 		</tr>
-		<tr ng-repeat="hero in data">
+		<tr ng-repeat="hero in data" class="odd{{ $odd }}">
 			<td>{{ $index+1 }}</td>
 			<td>{{ hero.title | uppercase }}</td>
 			<td><img ng-src="{{ hero.photo }}" width="40" align="absmiddle" /></td>
