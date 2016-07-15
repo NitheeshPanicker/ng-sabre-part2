@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Step 4</title>
+	<style>
+		div header{
+			border: 5px dotted blue;
+			background-color: green;
+		}
+		header{
+			border: 2px solid red;
+			background-color: orange;
+		}
+	</style>
+	<script src="lib/angular.js"></script>
+	<script>
+		angular.module("app",[]);
+		angular.module("app").controller("compcontroller", function($scope,$timeout){
+			$scope.title = "sabre";
+			// $scope.$apply();
+			// $scope.$digest();
+			/*
+			setTimeout(function(){
+				$scope.title = "Batman";
+				// $scope.$apply();
+				   $scope.$digest();
+				console.log("title changed");
+			}, 5000);
+			 */
+			$timeout(function(){
+				$scope.title = "Batman";
+				console.log("title changed");
+			}, 5000);
+			
+		});
+	</script>
+</head>
+<body ng-app="app" ng-controller="compcontroller">
+		<h1>{{ title }}</h1>
+		<input type="text" ng-model="title" />
+</body>
+</html>
