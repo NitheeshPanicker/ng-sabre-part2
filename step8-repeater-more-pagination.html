@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="lib/angular.js"></script>
+	<script>
+		angular.module("app",[]);
+		angular.module("app")
+		.controller("herocontroller", function($scope){
+			$scope.data = [
+	{title : 'Batman', 		fName : 'Bruce', 	lName:'Wayne', 	city:'Gotham', 		power : 7, releasedate : '2016-02-10', price:123.456789, photo:'images/batman.jpg'},
+	{title : 'Superman', 	fName : 'Clark', 	lName:'Kent', 	city:'Metropolis', 	power : 8, releasedate : '2016-06-01', price:125.678459, photo:'images/superman.jpg'},
+	{title : 'Ironman', 	fName : 'Tony', 	lName:'Stark', 	city:'New York', 	power : 6, releasedate : '2016-06-02', price:144.678459, photo:'images/ironman.jpg'},
+	{title : 'Spiderman', 	fName : 'Peter', 	lName:'Parker', city:'New York', 	power : 7, releasedate : '2016-06-03', price:201.674589, photo:'images/spiderman.jpg'},
+	{title : 'Phantom', 	fName : 'Kit', 		lName:'Walker', city:'Bangala', 	power : 7, releasedate : '2016-06-04', price: 90.894567, photo:'images/phantom.jpg'}
+	];
+		$scope.pagesize = 2;
+		$scope.offset = 0;
+		});
+	</script>
+</head>
+<body ng-app="app" ng-controller="herocontroller">
+	<table class="table " border="1" cellspacing="5" cellpadding="5">
+		<tr>
+			<th>Title</th>
+			<th>Photo</th>
+			<th>Full Name</th>
+			<th>City</th>
+			<th>Price</th>
+			<th>Release Date</th>
+		</tr>
+		<tr ng-repeat="hero in data | limitTo : pagesize : offset" class="odd{{ $odd }}">
+			<td>{{ hero.title | uppercase }}</td>
+			<td><img ng-src="{{ hero.photo }}" width="40" align="absmiddle" /></td>
+			<td>{{ hero.fName+" "+hero.lName }}</td>
+			<td>{{ hero.city }}</td>
+			<td>{{ hero.price | currency : 'INR ' : 0 }}</td>
+			<td>{{ hero.releasedate | date : 'dd/MMM/yyyy' }}</td>
+		</tr>
+	</table>
+	<button ng-hide="offset > data.length / pagesize" ng-click="offset = offset+2">Next</button>
+	<button ng-show="offset > 1"  ng-click="offset = offset-2">Back</button>
+</body>
+</html>
