@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="lib/angular.js"></script>
+</head>
+<body ng-app ng-init="power = 6; rating = 0">
+	<input type="number" ng-model="power" />
+	<br/>
+	<h1 ng-if="power < 5"> Weak </h1>
+	<h1 ng-if="power == 5"> Revocering </h1>
+	<h1 ng-if="power > 5"> Strong </h1>
+	<hr/>
+	<input type="range" min="0" max="5" step="1" ng-model="rating" />
+	<span>{{ rating }}</span>
+	<h1>
+		<span ng-if="rating >= 1">*</span>
+		<span ng-if="rating >= 2">*</span>
+		<span ng-if="rating >= 3">*</span>
+		<span ng-if="rating >= 4">*</span>
+		<span ng-if="rating >= 5">*</span>
+	</h1>
+	<hr/>
+	<label> Display Only New Items 
+		<input type="checkbox" ng-model="instock" />
+	</label>
+	<ul ng-switch on="instock">
+		<li ng-switch-when="true"> New Item</li>
+		<li ng-switch-default> Default Item</li>
+		<li ng-switch-when="true"> New Item</li>
+		<li ng-switch-when="true"> New Item</li>
+		<li ng-switch-when="false"> Old Item</li>
+		<li ng-switch-when="true"> New Item</li>
+		<li ng-switch-when="false"> Old Item</li>
+		<li ng-switch-default> Default Item</li>
+		<li ng-switch-default> Default Item</li>
+		<li ng-switch-when="false"> Old Item</li>
+	</ul>
+</body>
+</html>
