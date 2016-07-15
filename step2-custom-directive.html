@@ -21,19 +21,30 @@
 			return {
 				templateUrl : "view/pagetitle.html",
 				restrict : "CMEA",
-				replace :true
+				replace : true,
+				scope : {
+					title : "@comptitle",
+					tagline : "@tl",
+					headcount : "@hc",
+				}
 			}
+		});
+		angular.module("app").controller("compcontroller", function($scope){
+			$scope.title = "Welcome to Sabre";
+			$scope.headcount = 0;
+			$scope.tagline= "Technology That Transforms Travel";
 		});
 	</script>
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="compcontroller">
 	<!-- div ng-include="'view/pagetitle.html'"></div-->
-	<pagetitle></pagetitle>
+	<input type="range" min="0" max="10000" step="100" ng-model="headcount" />
 	<hr/>
-	<div pagetitle></div>
+	<pagetitle comptitle="Sabre" tl="T4"></pagetitle>
 	<hr/>
-	<div class="pagetitle"></div>
+	<div comptitle="Ola" pagetitle tl="T3" ></div>
 	<hr/>
-	<!-- directive: pagetitle -->
+	<div comptitle="TCS" tl="do idea" class="pagetitle"></div>
+	
 </body>
 </html>
